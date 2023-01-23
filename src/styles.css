@@ -1,0 +1,233 @@
+:root {
+  --blue: #4EA8DE;
+  --blue-dark: #1E6F9F;
+  --purple: #8284FA;
+  --purple-dark: #5E60CE;
+  --danger: #E25858;
+  --gray-100: #F2F2F2;
+  --gray-200: #D9D9D9;
+  --gray-300: #808080;
+  --gray-400: #333333;
+  --gray-500: #262626;
+  --gray-600: #1A1A1A;
+  --gray-700: #0D0D0D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body, input, button, textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 140%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  background-color: var(--gray-600);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  height: 20%;
+  background-color: var(--gray-700);
+}
+
+.header img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.todo-creation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  margin-top: -1.6rem;
+}
+
+.input {
+  width: 44%;
+  padding: 1rem;
+
+  color: var(--gray-100);
+  
+  border-radius: 8px;
+  background-color: var(--gray-500);
+  outline: none;
+}
+
+.input:focus {
+  outline: 1px solid var(--purple-dark);
+}
+
+.create-todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  padding: 1rem;
+  color: var(--gray-100);
+  background-color: var(--blue-dark);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.create-todo:hover {
+  background-color: var(--blue);
+}
+
+.list-container {
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 4rem;
+  width: 52%;
+}
+
+.list-header, .list-created-tasks, .list-completed-tasks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-header {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.list-created-tasks h6 {
+  color: var(--blue);
+  font-size: 0.875rem;
+}
+
+.list-completed-tasks h6 {
+  color: var(--purple);
+  font-size: 0.875rem;
+}
+
+.list-created-tasks span, .list-completed-tasks span {
+  color: var(--gray-200);
+  font-size: 0.75rem;
+  line-height: 140%;
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.7rem;
+
+  background-color: var(--gray-400);
+  border-radius: 99px;
+}
+
+.todo-list {
+  list-style-type: none;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.todo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 1rem;
+  margin-bottom: 1rem;
+  height: 4.5rem;
+  border-radius: 8px;
+
+  background-color: var(--gray-500);
+}
+
+.todo p {
+  color: var(--gray-100);
+  font-size: 0.875rem;
+
+  margin-left: 1rem;
+  margin-right: auto;
+}
+
+.todo svg {
+  padding: 0.25rem;
+  color: var(--gray-300);
+  cursor: pointer;
+}
+
+.todo svg:hover {
+  color: var(--danger);
+  border-radius:  4px;
+  background-color: var(--gray-400);
+}
+
+.todo input[type="radio"] {
+  display: none;
+}
+
+.todo span {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  text-align: center;
+}
+
+.todo span:hover {
+  border: 2px solid var(--blue-dark);
+}
+
+.todo span img {
+  width: 0.75rem;
+  opacity: 0;
+  transition: all .25s ease;
+}
+
+.todo span {
+  background-color: var(--gray-700);
+}
+
+.todo input[type="radio"]:checked + span img {
+  opacity: 1;
+}
+
+.todo input[type="radio"]:checked + span {
+  background-color: var(--purple-dark);
+  border: none;
+}
+
+.todo input[type="radio"]:checked + span:hover {
+  background-color: var(--purple);
+}
+
+.empty-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1.5rem;
+  height: 15rem;
+  width: 100%;
+
+  color: var(--gray-300);
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+}
+
+.empty-list h6 {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
