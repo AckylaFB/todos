@@ -88,6 +88,12 @@ body, input, button, textarea {
   background-color: var(--blue);
 }
 
+.create-todo:disabled {
+  color: var(--gray-300);
+  background-color: var(--gray-500);
+  cursor: not-allowed;
+}
+
 .list-container {
   align-self: center;
 
@@ -151,12 +157,17 @@ body, input, button, textarea {
   background-color: var(--gray-500);
 }
 
-.todo p {
+.todo-text {
   color: var(--gray-100);
   font-size: 0.875rem;
 
   margin-left: 1rem;
   margin-right: auto;
+}
+
+.todo-completed {
+  text-decoration: line-through;
+  color: var(--gray-300);
 }
 
 .todo svg {

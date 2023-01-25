@@ -1,9 +1,12 @@
-import Todo from './Todo';
+import TodoItem from './TodoItem';
 import clipboard from './assets/Clipboard.svg';
+import { TodoListProps } from './types';
 
-function TodoList() {
-  const todos = [];
-
+function TodoList({
+  todos,
+  handleDeleteTodo,
+  changeTodoStatus,
+}: TodoListProps) {
   return (
     <section className="list-container">
       <header className="list-header">
@@ -20,9 +23,14 @@ function TodoList() {
 
       {todos.length ? (
         <ul className="todo-list">
-          <Todo />
-          <Todo />
-          <Todo />
+          {todos.map(todo => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              handleDeleteTodo={handleDeleteTodo}
+              changeTodoStatus={changeTodoStatus}
+            />
+          ))}
         </ul>
       ) : (
         <EmptyList />

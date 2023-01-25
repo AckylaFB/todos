@@ -1,24 +1,41 @@
-import { PlusCircle } from 'phosphor-react';
+import { useState } from 'react';
 import logo from './assets/Logo.png';
-import Input from './Input';
+import CreateTodo from './CreateTodo';
 import TodoList from './TodoList';
+import { Todo } from './types';
 
 function App() {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const handleCreateTodo = (todo: Todo) => {
+    setTodos([...todos, todo]);
+  };
+
+  const handleDeleteTodo = (id: number) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const changeTodoStatus = (id: number) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  };
+
   return (
     <div className="container">
       <header className="header">
         <img src={logo} alt="to do" />
       </header>
 
-      <section className="todo-creation">
-        <Input />
-        <button type="button" className="create-todo">
-          Criar
-          <PlusCircle size={24} />
-        </button>
-      </section>
+      <CreateTodo handleCreateTodo={handleCreateTodo} />
 
-      <TodoList />
+      <TodoList
+        todos={todos}
+        handleDeleteTodo={handleDeleteTodo}
+        changeTodoStatus={changeTodoStatus}
+      />
     </div>
   );
 }
