@@ -7,17 +7,19 @@ function TodoList({
   handleDeleteTodo,
   changeTodoStatus,
 }: TodoListProps) {
+  const completedTasks = todos.filter(todo => todo.completed).length;
+
   return (
     <section className="list-container">
       <header className="list-header">
         <div className="list-created-tasks">
           <h6>Tarefas criadas</h6>
-          <span>0</span>
+          <span>{todos.length}</span>
         </div>
 
         <div className="list-completed-tasks">
           <h6>Concluídas</h6>
-          <span>2 de 5</span>
+          <span>{`${completedTasks} de ${todos.length}`}</span>
         </div>
       </header>
 
