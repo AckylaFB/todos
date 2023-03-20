@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from './assets/Logo.png';
 import CreateTodo from './CreateTodo';
 import TodoList from './TodoList';
 import { Todo } from './types';
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(getStoragedTodos());
 
   const handleCreateTodo = (todo: Todo) => {
     setTodos([...todos, todo]);
@@ -23,6 +23,10 @@ function App() {
     );
   };
 
+  useEffect(() => {
+    localStorage.setItem('@todos:1.0.0', JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <div className="container">
       <header className="header">
@@ -38,6 +42,16 @@ function App() {
       />
     </div>
   );
+}
+
+function getStoragedTodos() {
+  const storagedTodos = localStorage.getItem('@todos:1.0.0');
+
+  if (storagedTodos) {
+    return JSON.parse(storagedTodos);
+  }
+
+  return [];
 }
 
 export default App;
