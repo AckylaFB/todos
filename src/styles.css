@@ -100,10 +100,12 @@ body, input, button, textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
   margin-top: 4rem;
   width: 52%;
+  height: 50%;
+
+  overflow-y: scroll;
 }
 
 .list-header, .list-created-tasks, .list-completed-tasks {
@@ -115,6 +117,12 @@ body, input, button, textarea {
 .list-header {
   width: 100%;
   padding: 1rem 0;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  background-color: var(--gray-600);
 }
 
 .list-created-tasks h6 {
@@ -141,7 +149,10 @@ body, input, button, textarea {
 .todo-list {
   list-style-type: none;
   width: 100%;
-  margin-top: 1.5rem;
+  height: 100%;
+
+  position: relative;
+  top: 2.5rem;
 }
 
 .todo {
